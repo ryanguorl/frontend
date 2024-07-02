@@ -90,7 +90,7 @@ const Footer = () => {
         <VStack spacing={ 1 } mt={ 6 } alignItems="start">
           { apiVersionUrl && (
             <Text fontSize="xs">
-              Version: <Link href={ apiVersionUrl } target="_blank">{ backendVersionData?.backend_version }</Link>
+              Version: 2.0
             </Text>
           ) }
           { frontendLink && (
@@ -99,7 +99,7 @@ const Footer = () => {
         </VStack>
       </Box>
     );
-  }, [ apiVersionUrl, backendVersionData?.backend_version, frontendLink ]);
+  }, [ apiVersionUrl, frontendLink ]);
 
   const containerProps: GridProps = {
     as: 'footer',
