@@ -4,7 +4,7 @@ import * as Sentry from '@sentry/react';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import type { AppProps } from 'next/app';
-import React from 'react';
+import React, { useEffect, useState } from "react";
 
 import type { NextPageWithLayout } from 'nextjs/types';
 
@@ -25,6 +25,10 @@ import Web3ModalProvider from 'ui/shared/Web3ModalProvider';
 
 import 'lib/setLocale';
 // import 'focus-visible/dist/focus-visible';
+
+import { NextIntlClientProvider } from "next-intl";
+import enMessage from "../messages/en.json";
+import zhMessage from "../messages/zh.json";
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
@@ -55,30 +59,50 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   const getLayout = Component.getLayout ?? ((page) => <Layout>{ page }</Layout>);
 
+  const [locale, setLocale] = useState("en");
+  const [messages, setMessages] = useState({});
+
+  useEffect(() => {
+    const storedLocale = localStorage.getItem("NEXT_LOCALE") || "en";
+    setLocale(storedLocale);
+
+    const loadMessages = async (locale: string) => {
+      if (locale == "zh") {
+        setMessages(zhMessage);
+      } else {
+        setMessages(enMessage);
+      }
+    };
+
+    loadMessages(storedLocale);
+  }, []);
+
   return (
     <ChakraProvider cookies={ pageProps.cookies }>
-      <AppErrorBoundary
-        { ...ERROR_SCREEN_STYLES }
-        onError={ handleError }
-      >
-        <Web3ModalProvider>
-          <AppContextProvider pageProps={ pageProps }>
-            <QueryClientProvider client={ queryClient }>
-              <GrowthBookProvider growthbook={ growthBook }>
-                <ScrollDirectionProvider>
-                  <SocketProvider url={ `${ config.api.socket }${ config.api.basePath }/socket/v2` }>
-                    <MarketplaceContextProvider>
-                      { getLayout(<Component { ...pageProps }/>) }
-                    </MarketplaceContextProvider>
-                  </SocketProvider>
-                </ScrollDirectionProvider>
-              </GrowthBookProvider>
-              <ReactQueryDevtools buttonPosition="bottom-left" position="left"/>
-              <GoogleAnalytics/>
-            </QueryClientProvider>
-          </AppContextProvider>
-        </Web3ModalProvider>
-      </AppErrorBoundary>
+      <NextIntlClientProvider locale={locale} messages={messages}>
+        <AppErrorBoundary
+          { ...ERROR_SCREEN_STYLES }
+          onError={ handleError }
+        >
+          <Web3ModalProvider>
+            <AppContextProvider pageProps={ pageProps }>
+              <QueryClientProvider client={ queryClient }>
+                <GrowthBookProvider growthbook={ growthBook }>
+                  <ScrollDirectionProvider>
+                    <SocketProvider url={ `${ config.api.socket }${ config.api.basePath }/socket/v2` }>
+                      <MarketplaceContextProvider>
+                        { getLayout(<Component { ...pageProps }/>) }
+                      </MarketplaceContextProvider>
+                    </SocketProvider>
+                  </ScrollDirectionProvider>
+                </GrowthBookProvider>
+                <ReactQueryDevtools buttonPosition="bottom-left" position="left"/>
+                <GoogleAnalytics/>
+              </QueryClientProvider>
+            </AppContextProvider>
+          </Web3ModalProvider>
+        </AppErrorBoundary>
+      </NextIntlClientProvider>
     </ChakraProvider>
   );
 }
