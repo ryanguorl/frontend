@@ -85,7 +85,7 @@ const Footer = () => {
       <Box gridArea={ gridArea }>
         <Icon as={ pegoLogo } mr={ 1 } w="120px" h="20px" display="inline-block" verticalAlign="middle"/>
         <Text mt={ 3 } fontSize="xs">
-          PEGO is a Web3 infrastructure that provides high autonomy, scalability, and sustainability for decentralized applications.
+          { config.t()("footer-text-1") }
         </Text>
         <VStack spacing={ 1 } mt={ 6 } alignItems="start">
           { apiVersionUrl && (
@@ -110,6 +110,16 @@ const Footer = () => {
     gridTemplateColumns: { base: '1fr', lg: 'minmax(auto, 470px) 1fr' },
     columnGap: { lg: '32px', xl: '100px' },
   };
+
+  const localeMessages: any = {
+    "Pego Network": config.t()('Pego Network'),
+    "Community": config.t()('Community'),
+    "About": config.t()('About'),
+    "Github": config.t()('Github'),
+    "Twitter": config.t()('Twitter'),
+    "Telegram": config.t()('Telegram'),
+    "Discord": config.t()('Discord')
+  }
 
   if (config.UI.footer.links) {
     return (
@@ -137,9 +147,10 @@ const Footer = () => {
               .slice(0, colNum)
               .map(linkGroup => (
                 <Box key={ linkGroup.title }>
-                  <Skeleton fontWeight={ 500 } mb={ 3 } display="inline-block" isLoaded={ !isPlaceholderData }>{ linkGroup.title }</Skeleton>
+                  <Skeleton fontWeight={ 500 } mb={ 3 } display="inline-block" isLoaded={ !isPlaceholderData }>{ localeMessages[linkGroup.title] }</Skeleton>
                   <VStack spacing={ 1 } alignItems="start">
-                    { linkGroup.links.map(link => <FooterLinkItem { ...link } key={ link.text } isLoading={ isPlaceholderData }/>) }
+                    { linkGroup.links.map(link => 
+                    <FooterLinkItem { ...link } key={ link.text } isLoading={ isPlaceholderData } text={ localeMessages[link.text] } />) }
                   </VStack>
                 </Box>
               ))

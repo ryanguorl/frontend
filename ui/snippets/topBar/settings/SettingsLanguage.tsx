@@ -6,6 +6,7 @@ import { LOCALES } from 'lib/settings/locale';
 import SettingsSample from './SettingsSample';
 import { local } from 'd3-selection';
 // import { useRouter } from 'next/router';
+import config from "configs/app";
 
 const SettingsLanguage = () => {
   const [ activeId, setActiveId ] = React.useState<string>();
@@ -24,10 +25,11 @@ const SettingsLanguage = () => {
 
   return (
     <div>
-      <Box fontWeight={ 600 }>Languages</Box>
+      <Box fontWeight={ 600 }>{ config.t()("Languages") }</Box>
       <Flex>
         { LOCALES.map((locale) => (
           <SettingsSample
+            key={ locale.id }
             label={ locale.label }
             value={ locale.id }
             isActive={ locale.id === activeId }
