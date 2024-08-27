@@ -247,5 +247,22 @@
   "statistic & data": "statistic & data",
   "stats": "stats",
   "Gas price history": "Gas price history",
-  "Charts & stats": "Charts & stats"
+  "Charts & stats": "Charts & stats",
+  "Additional info": "Additional info",
+  "Gas limit & usage by transaction": "Gas limit & usage by transaction",
+  "Others": "Others",
+  "Txn type": "Txn type",
+  "Position": "Position",
+  "More details": "More details",
+  "Inventory": "Inventory",
+  "Owner": "Owner",
+  "Metadata": "Metadata",
+  "Name": "Name",
+  "Description": "Description",
+  "Attributes": "Attributes",
+  "Txs count": "Txs count",
+  "Compiler": "Compiler",
+  "Optimization": "Optimization",
+  "Constructor args": "Constructor args",
+  "API documentation": "API documentation"
 }

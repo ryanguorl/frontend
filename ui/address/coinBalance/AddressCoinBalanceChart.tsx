@@ -30,7 +30,7 @@ const AddressCoinBalanceChart = ({ addressHash }: Props) => {
   return (
     <ChartWidget
       isError={ isError }
-      title={ config.t()("Balances") }
+      title="Balances"
       items={ items }
       isLoading={ isPending }
       h="300px"

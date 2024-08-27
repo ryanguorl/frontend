@@ -74,6 +74,7 @@ const FullscreenChartModal = ({
     "New verified contracts number for the period": config.t()('New verified contracts number for the period'),
     "Verified contracts growth": config.t()('Verified contracts growth'),
     "Cumulative number verified contracts for the period": config.t()('Cumulative number verified contracts for the period'),
+    "Balances": config.t()("Balances")
   }  
 
   return (

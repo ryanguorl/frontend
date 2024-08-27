@@ -247,5 +247,22 @@
   "statistic & data": "统计与数据",
   "stats": "统计",
   "Gas price history": "Gas 价格历史",
-  "Charts & stats": "图表与统计"
+  "Charts & stats": "图表与统计",
+  "Additional info": "附加信息",
+  "Gas limit & usage by transaction": "Gas 限制与使用",
+  "Others": "其它",
+  "Txn type": "交易类型",
+  "Position": "位置",
+  "More details": "更多细节",
+  "Inventory": "库存",
+  "Owner": "所有者",
+  "Metadata": "元数据",
+  "Name": "名称",
+  "Description": "描述",
+  "Attributes": "属性",
+  "Txs count": "交易数量",
+  "Compiler": "编译器",
+  "Optimization": "优化",
+  "Constructor args": "构造函数参数",
+  "API documentation": "API 文档"
 }

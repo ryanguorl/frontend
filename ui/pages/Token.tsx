@@ -163,7 +163,7 @@ const TokenPageContent = () => {
   const tabs: Array<RoutedTab> = [
     hasInventoryTab ? {
       id: 'inventory',
-      title: 'Inventory',
+      title: `${ config.t()('Inventory') }`,
       component: <TokenInventory inventoryQuery={ inventoryQuery } tokenQuery={ tokenQuery } ownerFilter={ ownerFilter } shouldRender={ !isLoading }/>,
     } : undefined,
     {
