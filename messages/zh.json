@@ -1,5 +1,5 @@
 {
-  "blockchain explorer": "游览器",
+  "blockchain explorer": "浏览器",
   "Blockchain": "区块链",
   "Tokens": "代币",
   "API": "API",
@@ -10,7 +10,7 @@
   "Verified contracts": "开源合约",
   "Verify contract": "验证合约",
   "Gas tracker": "最佳手续费",
-  "Connect wallet": "链接钱包",
+  "Connect wallet": "连接钱包",
   "Total blocks": "区块数量",
   "Average block time": "出块时间",
   "Total transactions": "交易数量",
