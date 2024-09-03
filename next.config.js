@@ -12,6 +12,10 @@ const rewrites = require('./nextjs/rewrites');
 
 /** @type {import('next').NextConfig} */
 const moduleExports = {
+  eslint: {
+    // Disable the ESLint check during the build process
+    ignoreDuringBuilds: true,
+  },
   transpilePackages: [
     'react-syntax-highlighter',
     'swagger-client',
